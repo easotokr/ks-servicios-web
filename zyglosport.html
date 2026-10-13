@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ZygloSport · Gestión de clubes deportivos</title>
+  <meta name="description" content="ZygloSport: socios, cuotas, pagos en línea, conciliación bancaria y avisos por WhatsApp para clubes deportivos. Etapa piloto.">
+  <meta property="og:title" content="ZygloSport · Gestión de clubes deportivos">
+  <meta property="og:description" content="ZygloSport: socios, cuotas, pagos en línea, conciliación bancaria y avisos por WhatsApp para clubes deportivos. Etapa piloto.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b3fa6'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='800' font-size='15' fill='white' text-anchor='middle'%3EKS%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@600;700;800&family=Public+Sans:wght@400;500;600&family=Syne:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body class="theme-noche">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html"><span class="brand-mark">KS</span><span>KS Servicios</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav id="menu" class="site-nav" aria-label="Principal">
+        <a href="sap.html">Consultoría SAP</a>
+        <a href="desarrollo.html">Desarrollo de sistemas</a>
+        <a href="capacitacion.html">Capacitación</a>
+        <a href="zyglosport.html" aria-current="page">ZygloSport</a>
+        <a class="nav-cta" href="contacto.html">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <h1>El club en tus manos.</h1>
+          <p class="lead">Socios, cuotas, pagos, conciliación bancaria y avisos por WhatsApp en un solo lugar, para que la administración del club no dependa de una planilla ni de una sola persona.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:contacto@ks-servicios.cl?subject=Club%20piloto%20ZygloSport">Quiero ser club piloto</a>
+            <a class="btn btn-ghost" href="#funciones">Ver qué hace</a>
+          </div>
+        </div>
+        <div class="demo" aria-labelledby="demo-titulo">
+          <div class="demo-cab">
+            <h2 id="demo-titulo">Cartola del banco</h2>
+            <span>datos de ejemplo</span>
+          </div>
+          <ul id="demo-lista" aria-live="polite">
+            <li><span>Transferencia · M. González</span><span class="monto">$25.000</span><span class="estado" data-destino="Cuota octubre · Sub-12">Sin asignar</span></li>
+            <li><span>Transferencia · C. Rojas</span><span class="monto">$25.000</span><span class="estado" data-destino="Cuota octubre · Sub-14">Sin asignar</span></li>
+            <li><span>Transferencia · P. Muñoz</span><span class="monto">$50.000</span><span class="estado" data-destino="Cuotas octubre y noviembre · Sub-16">Sin asignar</span></li>
+            <li><span>Transferencia · A. Soto</span><span class="monto">$25.000</span><span class="estado" data-destino="Cuota octubre · Adultos">Sin asignar</span></li>
+          </ul>
+          <button class="btn btn-primary" id="demo-btn" type="button">Conciliar pagos</button>
+          <p class="demo-nota">Cada pago de la cartola se asigna a la cuota del socio que corresponde.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="hist-t">
+      <div class="wrap two">
+        <h2 id="hist-t">La información es del club, no del tesorero de turno.</h2>
+        <div>
+          <p>Fui tesorero de un club. Cuando asumí, <strong>no me entregaron nada</strong>. Cuando dejé el cargo, <strong>nadie me pidió la información</strong>, aunque yo la tenía ordenada.</p>
+          <p>Ese es el problema que ZygloSport resuelve: los socios, los pagos y la historia financiera quedan en el sistema del club, y quien llega al cargo la encuentra completa desde el primer día.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funciones" aria-labelledby="fn-t">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="fn-t">Lo que ZygloSport hace por tu club</h2>
+          <p>Pensado para tesoreros y directivas que administran en su tiempo libre.</p>
+        </div>
+        <ul class="rows">
+          <li><h3>Socios y planteles</h3><p>Registro de socios, jugadores y categorías, con su historial de pagos y su estado al día.</p></li>
+          <li><h3>Cuotas y cobranza</h3><p>Ves quién pagó, quién debe y cuánto, sin armar planillas cada mes.</p></li>
+          <li><h3>Pagos en línea<small>Flow · Khipu</small></h3><p>Integración con pasarelas de pago para que los socios paguen desde el celular y el pago quede registrado solo.</p></li>
+          <li><h3>Conciliación bancaria</h3><p>Cargas la cartola de tu banco y el sistema cruza cada abono con la cuota que corresponde.</p></li>
+          <li><h3>Avisos por WhatsApp</h3><p>Recordatorios de cuotas y avisos de partidos al WhatsApp de cada socio, con un plan fijo según el tamaño del club.</p></li>
+          <li><h3>Un sistema, muchos clubes</h3><p>Cada club trabaja con sus propios datos, separados de los demás.</p></li>
+          <li><h3>Asistente de tesorería <span class="tag">en desarrollo</span></h3><p>Un asistente con IA para responder preguntas sobre las finanzas del club y apoyar al tesorero.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-t">
+      <div class="wrap">
+        <div>
+          <h2 id="cta-t">Estamos eligiendo los primeros clubes.</h2>
+          <p>ZygloSport está en etapa piloto. Si administras un club y quieres probarlo antes que nadie, escríbeme.</p>
+        </div>
+        <a class="btn" href="mailto:contacto@ks-servicios.cl?subject=Club%20piloto%20ZygloSport">Escribir para ser piloto</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer band-dark">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark">KS</span><span>KS Servicios</span></a>
+          <p>Consultoría y desarrollo de sistemas. SAP financiero, software a medida y capacitación.</p>
+        </div>
+        <div>
+          <h2>Áreas</h2>
+          <ul>
+<li><a href="sap.html">Consultoría SAP</a></li>
+<li><a href="desarrollo.html">Desarrollo de sistemas</a></li>
+<li><a href="capacitacion.html">Capacitación</a></li>
+<li><a href="zyglosport.html">ZygloSport</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contacto</h2>
+          <ul>
+            <li><a href="mailto:contacto@ks-servicios.cl">contacto@ks-servicios.cl</a></li>
+            <li>Santiago, Chile</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="anio">2026</span> KS Servicios</span>
+        <span>ZygloSport es un producto de KS Servicios.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="assets/main.js"></script>
+</body>
+</html>

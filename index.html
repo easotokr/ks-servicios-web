@@ -3,432 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>KS Servicios · ZygloSport y consultoría SAP</title>
-  <meta name="description" content="ZygloSport: plataforma para administrar clubes deportivos (socios, cuotas, pagos, conciliación y WhatsApp). KS Servicios: consultoría y capacitación SAP FI/CO/FSCM.">
+  <title>KS Servicios · Consultoría y desarrollo de sistemas</title>
+  <meta name="description" content="KS Servicios: consultoría SAP, desarrollo de sistemas a medida, capacitación y ZygloSport, plataforma para clubes deportivos.">
+  <meta property="og:title" content="KS Servicios · Consultoría y desarrollo de sistemas">
+  <meta property="og:description" content="KS Servicios: consultoría SAP, desarrollo de sistemas a medida, capacitación y ZygloSport, plataforma para clubes deportivos.">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b3fa6'/%3E%3Ctext x='16' y='21.5' font-family='Arial' font-weight='800' font-size='15' fill='white' text-anchor='middle'%3EKS%3C/text%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      /* Ajusta estos valores a los de tu sistema de diseño "Noche/Fluor" */
-      --noche: #0c1224;
-      --noche-2: #151d36;
-      --noche-linea: #26304f;
-      --fluor: #d4ff3f;
-      --texto-noche: #e9edf7;
-      --texto-noche-suave: #a3adc8;
-
-      --papel: #f3f5f9;
-      --tinta: #111a2e;
-      --tinta-suave: #4a556f;
-      --linea: #d5dae6;
-      --azul: #2340d9;
-
-      --f-titulo: "Syne", system-ui, sans-serif;
-      --f-texto: "Inter", system-ui, sans-serif;
-      --f-dato: "JetBrains Mono", ui-monospace, monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
-    body {
-      margin: 0;
-      font-family: var(--f-texto);
-      font-size: 1.0625rem;
-      line-height: 1.6;
-      color: var(--tinta);
-      background: var(--papel);
-    }
-    img, svg { max-width: 100%; }
-    a { color: inherit; }
-    :focus-visible { outline: 3px solid var(--fluor); outline-offset: 3px; }
-    .on-light :focus-visible { outline-color: var(--azul); }
-
-    .wrap { width: min(1120px, 100% - 2.5rem); margin-inline: auto; }
-
-    /* ---------- Encabezado ---------- */
-    .site-header {
-      position: sticky; top: 0; z-index: 10;
-      background: rgba(12, 18, 36, .92);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--noche-linea);
-      color: var(--texto-noche);
-    }
-    .site-header .wrap {
-      display: flex; align-items: center; justify-content: space-between;
-      min-height: 64px; gap: 1rem;
-    }
-    .marca { font-family: var(--f-titulo); font-weight: 800; font-size: 1.15rem; text-decoration: none; letter-spacing: .01em; }
-    .site-nav { display: flex; gap: 1.5rem; font-size: .95rem; }
-    .site-nav a { text-decoration: none; color: var(--texto-noche-suave); }
-    .site-nav a:hover { color: var(--texto-noche); }
-    .site-nav .nav-zyglo { color: var(--fluor); font-weight: 600; }
-
-    /* ---------- Bloque oscuro: ZygloSport ---------- */
-    .zyglo { background: var(--noche); color: var(--texto-noche); }
-
-    .hero { padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(3rem, 7vw, 5.5rem); }
-    .hero-grid {
-      display: grid; gap: clamp(2rem, 5vw, 4.5rem);
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
-      align-items: center;
-    }
-    .producto { font-family: var(--f-dato); font-size: .85rem; color: var(--fluor); margin: 0 0 1.25rem; }
-    h1 {
-      font-family: var(--f-titulo); font-weight: 800;
-      font-size: clamp(2.8rem, 7.2vw, 5.6rem);
-      line-height: .98; letter-spacing: -.02em; margin: 0 0 1.5rem;
-    }
-    .hero p.lead { font-size: 1.2rem; color: var(--texto-noche-suave); max-width: 34rem; margin: 0 0 2rem; }
-    .acciones { display: flex; flex-wrap: wrap; gap: .75rem; }
-    .btn {
-      display: inline-block; padding: .85rem 1.4rem; border-radius: 6px;
-      font-weight: 600; text-decoration: none; font-size: 1rem;
-      border: 1.5px solid transparent; cursor: pointer; font-family: inherit;
-    }
-    .btn-fluor { background: var(--fluor); color: var(--noche); }
-    .btn-fluor:hover { background: #e3ff7a; }
-    .btn-borde { border-color: var(--noche-linea); color: var(--texto-noche); background: transparent; }
-    .btn-borde:hover { border-color: var(--texto-noche-suave); }
-
-    /* Demo de conciliación */
-    .demo {
-      background: var(--noche-2); border: 1px solid var(--noche-linea);
-      border-radius: 10px; padding: 1.25rem;
-    }
-    .demo-cab { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; }
-    .demo-cab h2 { font-family: var(--f-titulo); font-size: 1.05rem; margin: 0; font-weight: 600; }
-    .demo-cab span { font-family: var(--f-dato); font-size: .75rem; color: var(--texto-noche-suave); }
-    .demo ul { list-style: none; margin: 0 0 1.1rem; padding: 0; }
-    .demo li {
-      display: grid; grid-template-columns: 1fr auto; gap: .15rem 1rem;
-      padding: .75rem 0; border-top: 1px solid var(--noche-linea);
-    }
-    .demo .quien { font-size: .95rem; }
-    .demo .monto { font-family: var(--f-dato); font-size: .9rem; text-align: right; }
-    .demo .estado { grid-column: 1 / -1; font-family: var(--f-dato); font-size: .78rem; color: var(--texto-noche-suave); transition: color .3s; }
-    .demo li.ok .estado { color: var(--fluor); }
-    .demo li.ok .quien { color: #fff; }
-    .demo-nota { font-size: .8rem; color: var(--texto-noche-suave); margin: .9rem 0 0; }
-
-    /* Historia del tesorero */
-    .historia { border-top: 1px solid var(--noche-linea); padding: clamp(3rem, 7vw, 5rem) 0; }
-    .historia-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 4rem); }
-    h2.titulo {
-      font-family: var(--f-titulo); font-weight: 800;
-      font-size: clamp(1.9rem, 4vw, 3rem); line-height: 1.05; letter-spacing: -.015em; margin: 0;
-    }
-    .historia p { color: var(--texto-noche-suave); margin: 0 0 1.1rem; max-width: 38rem; }
-    .historia p strong { color: var(--texto-noche); font-weight: 600; }
-
-    /* Funciones */
-    .funciones { border-top: 1px solid var(--noche-linea); padding: clamp(3rem, 7vw, 5rem) 0; }
-    .funciones h2.titulo { margin-bottom: 2.5rem; max-width: 30rem; }
-    .fn-lista { margin: 0; padding: 0; list-style: none; }
-    .fn-lista li {
-      display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 1rem 3rem;
-      padding: 1.4rem 0; border-top: 1px solid var(--noche-linea);
-    }
-    .fn-lista h3 { font-family: var(--f-titulo); font-weight: 600; font-size: 1.25rem; margin: 0; }
-    .fn-lista p { margin: 0; color: var(--texto-noche-suave); max-width: 38rem; }
-    .etiqueta { font-family: var(--f-dato); font-size: .72rem; color: var(--fluor); border: 1px solid var(--noche-linea); border-radius: 99px; padding: .1rem .6rem; margin-left: .5rem; vertical-align: middle; white-space: nowrap; }
-
-    /* Pilotos */
-    .pilotos { background: var(--fluor); color: var(--noche); padding: clamp(2.5rem, 6vw, 4rem) 0; }
-    .pilotos .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.5rem 3rem; }
-    .pilotos h2 { font-family: var(--f-titulo); font-weight: 800; font-size: clamp(1.6rem, 3.4vw, 2.4rem); line-height: 1.1; margin: 0 0 .5rem; letter-spacing: -.01em; }
-    .pilotos p { margin: 0; max-width: 36rem; }
-    .btn-noche { background: var(--noche); color: var(--texto-noche); }
-    .btn-noche:hover { background: var(--noche-2); }
-    .pilotos :focus-visible { outline-color: var(--noche); }
-
-    /* ---------- Bloque claro: SAP ---------- */
-    .sap { padding: clamp(3.5rem, 8vw, 6rem) 0; }
-    .sap-cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; margin-bottom: 3rem; align-items: end; }
-    .sap-cab .producto { color: var(--azul); }
-    .sap-cab p { margin: 0; color: var(--tinta-suave); max-width: 34rem; }
-    .servicios { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--linea); }
-    .servicios li {
-      display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: .5rem 3rem;
-      padding: 1.5rem 0; border-top: 1px solid var(--linea);
-    }
-    .servicios h3 { font-family: var(--f-titulo); font-weight: 600; font-size: 1.25rem; margin: 0; }
-    .servicios h3 small { display: block; font-family: var(--f-dato); font-weight: 400; font-size: .78rem; color: var(--azul); margin-top: .25rem; }
-    .servicios p { margin: 0; color: var(--tinta-suave); max-width: 38rem; }
-
-    .trayectoria { padding: 0 0 clamp(3.5rem, 8vw, 6rem); }
-    .trayectoria-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 2rem 3rem; }
-    .trayectoria p { margin: 0 0 1rem; color: var(--tinta-suave); max-width: 40rem; }
-    .trayectoria p strong { color: var(--tinta); font-weight: 600; }
-
-    /* ---------- Contacto ---------- */
-    .contacto { background: var(--noche); color: var(--texto-noche); padding: clamp(3rem, 7vw, 5rem) 0; }
-    .contacto-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 2rem 4rem; align-items: start; }
-    .contacto p { color: var(--texto-noche-suave); margin: 0 0 1rem; max-width: 30rem; }
-    .contacto dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .9rem 1.5rem; }
-    .contacto dt { font-family: var(--f-dato); font-size: .8rem; color: var(--texto-noche-suave); padding-top: .2rem; }
-    .contacto dd { margin: 0; }
-    .contacto dd a { text-decoration-color: var(--fluor); text-underline-offset: 4px; }
-
-    footer { background: var(--noche); color: var(--texto-noche-suave); border-top: 1px solid var(--noche-linea); font-size: .875rem; }
-    footer .wrap { padding: 1.5rem 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 2rem; }
-
-    /* ---------- Responsive ---------- */
-    @media (max-width: 860px) {
-      .hero-grid, .historia-grid, .sap-cab, .trayectoria-grid, .contacto-grid { grid-template-columns: 1fr; }
-      .fn-lista li, .servicios li { grid-template-columns: 1fr; gap: .4rem; }
-      .site-nav { gap: 1rem; font-size: .88rem; }
-      .site-nav .nav-extra { display: none; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      html { scroll-behavior: auto; }
-      * { transition: none !important; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@600;700;800&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
-<body>
-
+<body class="">
+  <a class="skip" href="#contenido">Saltar al contenido</a>
   <header class="site-header">
-    <div class="wrap">
-      <a class="marca" href="#inicio">KS Servicios</a>
-      <nav class="site-nav" aria-label="Principal">
-        <a class="nav-zyglo" href="#zyglosport">ZygloSport</a>
-        <a href="#sap">Consultoría SAP</a>
-        <a class="nav-extra" href="#trayectoria">Trayectoria</a>
-        <a href="#contacto">Contacto</a>
+    <div class="wrap bar">
+      <a class="brand" href="index.html"><span class="brand-mark">KS</span><span>KS Servicios</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu">Menú</button>
+      <nav id="menu" class="site-nav" aria-label="Principal">
+        <a href="sap.html">Consultoría SAP</a>
+        <a href="desarrollo.html">Desarrollo de sistemas</a>
+        <a href="capacitacion.html">Capacitación</a>
+        <a href="zyglosport.html">ZygloSport</a>
+        <a class="nav-cta" href="contacto.html">Contacto</a>
       </nav>
     </div>
   </header>
 
-  <main id="inicio">
-
-    <!-- ===== ZYGLOSPORT ===== -->
-    <div class="zyglo" id="zyglosport">
-      <section class="hero">
-        <div class="wrap hero-grid">
-          <div>
-            <p class="producto">ZygloSport · gestión de clubes deportivos</p>
-            <h1>El club en tus manos.</h1>
-            <p class="lead">Socios, cuotas, pagos, conciliación bancaria y avisos por WhatsApp en un solo lugar, para que la administración del club no dependa de una planilla ni de una sola persona.</p>
-            <div class="acciones">
-              <a class="btn btn-fluor" href="#contacto">Quiero ser club piloto</a>
-              <a class="btn btn-borde" href="#funciones">Ver qué hace</a>
-            </div>
-          </div>
-
-          <div class="demo" aria-labelledby="demo-titulo">
-            <div class="demo-cab">
-              <h2 id="demo-titulo">Cartola del banco</h2>
-              <span>datos de ejemplo</span>
-            </div>
-            <ul id="demo-lista" aria-live="polite">
-              <li>
-                <span class="quien">Transferencia · M. González</span><span class="monto">$25.000</span>
-                <span class="estado" data-destino="Cuota octubre · Sub-12">Sin asignar</span>
-              </li>
-              <li>
-                <span class="quien">Transferencia · C. Rojas</span><span class="monto">$25.000</span>
-                <span class="estado" data-destino="Cuota octubre · Sub-14">Sin asignar</span>
-              </li>
-              <li>
-                <span class="quien">Transferencia · P. Muñoz</span><span class="monto">$50.000</span>
-                <span class="estado" data-destino="Cuotas octubre y noviembre · Sub-16">Sin asignar</span>
-              </li>
-              <li>
-                <span class="quien">Transferencia · A. Soto</span><span class="monto">$25.000</span>
-                <span class="estado" data-destino="Cuota octubre · Adultos">Sin asignar</span>
-              </li>
-            </ul>
-            <button class="btn btn-fluor" id="demo-btn" type="button">Conciliar pagos</button>
-            <p class="demo-nota">Cada pago de la cartola se asigna a la cuota del socio que corresponde.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="historia" aria-labelledby="historia-titulo">
-        <div class="wrap historia-grid">
-          <h2 class="titulo" id="historia-titulo">La información es del club, no del tesorero de turno.</h2>
-          <div>
-            <p>Fui tesorero de un club. Cuando asumí, <strong>no me entregaron nada</strong>. Cuando dejé el cargo, <strong>nadie me pidió la información</strong>, aunque yo la tenía ordenada.</p>
-            <p>Ese es el problema que ZygloSport resuelve: los socios, los pagos y la historia financiera quedan en el sistema del club, y quien llega al cargo la encuentra completa desde el primer día.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="funciones" id="funciones" aria-labelledby="funciones-titulo">
-        <div class="wrap">
-          <h2 class="titulo" id="funciones-titulo">Lo que ZygloSport hace por tu club</h2>
-          <ul class="fn-lista">
-            <li>
-              <h3>Socios y planteles</h3>
-              <p>Registro de socios, jugadores y categorías, con su historial de pagos y su estado al día.</p>
-            </li>
-            <li>
-              <h3>Cuotas y cobranza</h3>
-              <p>Ves quién pagó, quién debe y cuánto, sin armar planillas cada mes.</p>
-            </li>
-            <li>
-              <h3>Pagos en línea</h3>
-              <p>Integración con las pasarelas Flow y Khipu para que los socios paguen desde el celular y el pago quede registrado solo.</p>
-            </li>
-            <li>
-              <h3>Conciliación bancaria</h3>
-              <p>Cargas la cartola de tu banco y el sistema cruza cada abono con la cuota que corresponde.</p>
-            </li>
-            <li>
-              <h3>Avisos por WhatsApp</h3>
-              <p>Recordatorios de cuotas y avisos de partidos directo al WhatsApp de cada socio, con plan fijo según el tamaño del club.</p>
-            </li>
-            <li>
-              <h3>Un sistema, muchos clubes</h3>
-              <p>Cada club trabaja con sus propios datos, separados de los demás, y con su propia marca.</p>
-            </li>
-            <li>
-              <h3>Asistente de tesorería <span class="etiqueta">en desarrollo</span></h3>
-              <p>Un asistente con IA para responder preguntas sobre las finanzas del club y apoyar al tesorero.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="pilotos" aria-labelledby="pilotos-titulo">
-        <div class="wrap">
-          <div>
-            <h2 id="pilotos-titulo">Estamos eligiendo los primeros clubes.</h2>
-            <p>ZygloSport está en etapa piloto. Si administras un club y quieres probarlo antes que nadie, escríbeme.</p>
-          </div>
-          <a class="btn btn-noche" href="mailto:contacto@ks-servicios.cl?subject=Club%20piloto%20ZygloSport">Escribir para ser piloto</a>
-        </div>
-      </section>
-    </div>
-
-    <!-- ===== SAP ===== -->
-    <div class="on-light">
-      <section class="sap" id="sap" aria-labelledby="sap-titulo">
-        <div class="wrap">
-          <div class="sap-cab">
-            <div>
-              <p class="producto">KS Servicios · SAP FI/CO/FSCM</p>
-              <h2 class="titulo" id="sap-titulo">Consultoría SAP para finanzas y control de gestión</h2>
-            </div>
-            <p>Más de 25 años trabajando con SAP en finanzas. Trabajo con tu equipo para que el sistema refleje cómo opera la empresa y los procesos financieros cierren sin sorpresas.</p>
-          </div>
-
-          <ul class="servicios">
-            <li>
-              <h3>Finanzas y contabilidad<small>SAP FI</small></h3>
-              <p>Libro mayor, cuentas por pagar y por cobrar, activos fijos y cierre contable, desde el diseño hasta la puesta en marcha y el soporte.</p>
-            </li>
-            <li>
-              <h3>Control de gestión<small>SAP CO</small></h3>
-              <p>Centros de costo, centros de beneficio y costeo de producto, para medir la operación con la información que la gerencia necesita.</p>
-            </li>
-            <li>
-              <h3>Tesorería y créditos<small>SAP FSCM</small></h3>
-              <p>Gestión de caja, cobranza, crédito de clientes y gestión de disputas.</p>
-            </li>
-            <li>
-              <h3>Extracto bancario electrónico<small>EBS · conciliación bancaria</small></h3>
-              <p>Diseño e implementación de la conciliación automática con los formatos de los bancos que opera tu empresa en Chile.</p>
-            </li>
-            <li>
-              <h3>Gestión de fondos, sector público<small>SAP Funds Management</small></h3>
-              <p>Presupuesto y ejecución presupuestaria para instituciones públicas, incluida la capacitación de los equipos usuarios.</p>
-            </li>
-            <li>
-              <h3>Migración a S/4HANA<small>proyectos en México y EE.UU.</small></h3>
-              <p>Participación en proyectos S/4HANA internacionales, con foco en finanzas y en que la transición no afecte el cierre.</p>
-            </li>
-            <li>
-              <h3>Capacitación SAP FI<small>formación de equipos y consultores</small></h3>
-              <p>Catorce años formando consultores y usuarios en SAP FI para certificación y para el trabajo diario.</p>
-            </li>
-            <li>
-              <h3>Controles de TI y auditoría<small>sistemas financieros</small></h3>
-              <p>Revisión de controles sobre los sistemas financieros, con la experiencia de cuatro años en auditoría de TI.</p>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="trayectoria" id="trayectoria" aria-labelledby="trayectoria-titulo">
-        <div class="wrap trayectoria-grid">
-          <h2 class="titulo" id="trayectoria-titulo">Trayectoria</h2>
-          <div>
-            <p><strong>Enrique Soto</strong> es consultor SAP especializado en FI, CO y FSCM, con cerca de <strong>25 años de experiencia</strong> en proyectos nacionales e internacionales.</p>
-            <p>Lideró el equipo de sistemas de back office de un casino y resort, coordinando a cinco personas permanentes y consultores externos. Trabajó cuatro años en auditoría de TI y enseñó SAP FI durante catorce años en una academia de certificación.</p>
-            <p>Además, creó y desarrolla ZygloSport, plataforma de gestión para clubes deportivos.</p>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- ===== CONTACTO ===== -->
-    <section class="contacto" id="contacto" aria-labelledby="contacto-titulo">
-      <div class="wrap contacto-grid">
+  <main id="contenido">
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div>
-          <h2 class="titulo" id="contacto-titulo">Conversemos</h2>
-          <p style="margin-top:1.25rem">Si tienes un club, escríbeme para ser piloto de ZygloSport. Si tienes una consulta sobre capacitación o proyectos SAP, también.</p>
+          <h1>Consultoría y desarrollo de sistemas.</h1>
+          <p class="lead">KS Servicios ayuda a empresas, instituciones y clubes a trabajar mejor sobre sus sistemas: SAP financiero, software a medida y formación de equipos.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="contacto.html">Conversemos</a>
+            <a class="btn btn-ghost" href="#areas">Ver áreas de trabajo</a>
+          </div>
         </div>
-        <dl>
-          <dt>Correo</dt>
-          <dd><a href="mailto:contacto@ks-servicios.cl">contacto@ks-servicios.cl</a></dd>
-          <dt>Ubicación</dt>
-          <dd>Santiago, Chile</dd>
-        </dl>
+        <nav id="areas" class="area-index" aria-label="Áreas de trabajo">
+          <a href="sap.html"><strong>Consultoría SAP</strong><span class="chev"></span><span class="d">FI, CO y FSCM: implementación, soporte y migración a S/4HANA.</span></a>
+          <a href="desarrollo.html"><strong>Desarrollo de sistemas</strong><span class="chev"></span><span class="d">Aplicaciones web, integraciones y automatización a medida.</span></a>
+          <a href="capacitacion.html"><strong>Capacitación</strong><span class="chev"></span><span class="d">Formación en SAP FI y Funds Management para consultores y usuarios.</span></a>
+          <a class="destacada" href="zyglosport.html"><strong>ZygloSport<span class="tag">producto propio</span></strong><span class="chev"></span><span class="d">Plataforma de gestión para clubes deportivos: socios, cuotas, pagos y avisos.</span></a>
+        </nav>
       </div>
     </section>
 
+    <section class="facts" aria-label="Experiencia">
+      <div class="wrap">
+        <ul>
+          <li><strong>Cerca de 25 años</strong><span>en proyectos SAP financieros</span></li>
+          <li><strong>Chile, México y EE.UU.</strong><span>proyectos nacionales e internacionales</span></li>
+          <li><strong>14 años formando</strong><span>consultores y usuarios en SAP FI</span></li>
+          <li><strong>Plataforma propia</strong><span>para clubes deportivos, en etapa piloto</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="ayuda-t">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="ayuda-t">Dónde podemos ayudarte</h2>
+          <p>Cuatro situaciones frecuentes y el área que las resuelve.</p>
+        </div>
+        <ul class="rows">
+          <li class="link"><a href="sap.html"><h3>El cierre contable depende de planillas y conciliaciones manuales</h3><p>Consultoría SAP: conciliación bancaria electrónica, control de gestión y procesos financieros más ordenados.</p><span class="chev"></span></a></li>
+          <li class="link"><a href="desarrollo.html"><h3>Necesitas un sistema que no existe en el mercado</h3><p>Desarrollo de sistemas: aplicaciones web a medida, integraciones con bancos y pasarelas de pago, y automatización.</p><span class="chev"></span></a></li>
+          <li class="link"><a href="capacitacion.html"><h3>Tu equipo usa SAP, pero no lo domina</h3><p>Capacitación: SAP FI, Funds Management y entrenamiento a medida con los procesos de tu organización.</p><span class="chev"></span></a></li>
+          <li class="link"><a href="zyglosport.html"><h3>Administras un club con planillas y mensajes sueltos</h3><p>ZygloSport: socios, cuotas, pagos y avisos por WhatsApp en un solo sistema.</p><span class="chev"></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="pasos-t">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="pasos-t">Cómo trabajamos</h2>
+          <p>El mismo método para un proyecto SAP, un sistema a medida o un curso.</p>
+        </div>
+        <ol class="steps">
+          <li><span class="n">01</span><h3>Entender</h3><p>Conversamos sobre cómo trabajas hoy, qué no funciona y qué necesitas lograr.</p></li>
+          <li><span class="n">02</span><h3>Proponer</h3><p>Defino el alcance, los plazos y la solución concreta antes de empezar.</p></li>
+          <li><span class="n">03</span><h3>Construir</h3><p>Se implementa por etapas, con revisiones contigo en cada una.</p></li>
+          <li><span class="n">04</span><h3>Acompañar</h3><p>Puesta en marcha, capacitación a quienes lo usan y soporte posterior.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="feature-band band-dark" aria-labelledby="zy-t">
+      <div class="wrap">
+        <div>
+          <h2 id="zy-t">ZygloSport, nuestro producto propio</h2>
+          <p>Una plataforma para administrar clubes deportivos, creada a partir de la experiencia real de llevar la tesorería de un club. Estamos eligiendo los primeros clubes piloto.</p>
+        </div>
+        <a class="btn btn-primary" href="zyglosport.html">Conocer ZygloSport</a>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quien-t">
+      <div class="wrap two">
+        <h2 id="quien-t">Quién está detrás</h2>
+        <div>
+          <p><strong>Enrique Soto</strong> es consultor SAP especializado en FI, CO y FSCM, con cerca de 25 años de experiencia en proyectos nacionales e internacionales, incluida la participación en proyectos S/4HANA en México y EE.UU.</p>
+          <p>Lideró el equipo de sistemas de back office de un casino y resort, trabajó cuatro años en auditoría de TI y enseñó SAP FI durante catorce años en una academia de certificación. Hoy combina esa experiencia con el desarrollo de software propio.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" aria-labelledby="cta-t">
+      <div class="wrap">
+        <div>
+          <h2 id="cta-t">¿Tienes un proyecto o una duda?</h2>
+          <p>Cuéntame qué necesitas y te respondo con una propuesta de cómo abordarlo.</p>
+        </div>
+        <a class="btn" href="mailto:contacto@ks-servicios.cl?subject=Consulta%20desde%20el%20sitio%20web">Escribir a KS Servicios</a>
+      </div>
+    </section>
   </main>
 
-  <footer>
+  <footer class="site-footer band-dark">
     <div class="wrap">
-      <span>© <span id="anio">2026</span> KS Servicios</span>
-      <span>ZygloSport es un producto de KS Servicios.</span>
+      <div class="foot-grid">
+        <div>
+          <a class="brand" href="index.html"><span class="brand-mark">KS</span><span>KS Servicios</span></a>
+          <p>Consultoría y desarrollo de sistemas. SAP financiero, software a medida y capacitación.</p>
+        </div>
+        <div>
+          <h2>Áreas</h2>
+          <ul>
+<li><a href="sap.html">Consultoría SAP</a></li>
+<li><a href="desarrollo.html">Desarrollo de sistemas</a></li>
+<li><a href="capacitacion.html">Capacitación</a></li>
+<li><a href="zyglosport.html">ZygloSport</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contacto</h2>
+          <ul>
+            <li><a href="mailto:contacto@ks-servicios.cl">contacto@ks-servicios.cl</a></li>
+            <li>Santiago, Chile</li>
+          </ul>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="anio">2026</span> KS Servicios</span>
+        <span>ZygloSport es un producto de KS Servicios.</span>
+      </div>
     </div>
   </footer>
-
-  <script>
-    document.getElementById("anio").textContent = new Date().getFullYear();
-
-    (function () {
-      var lista = document.getElementById("demo-lista");
-      var btn = document.getElementById("demo-btn");
-      if (!lista || !btn) return;
-      var filas = Array.prototype.slice.call(lista.querySelectorAll("li"));
-      var timers = [];
-
-      function reiniciar() {
-        timers.forEach(clearTimeout);
-        timers = [];
-        filas.forEach(function (li) {
-          li.classList.remove("ok");
-          li.querySelector(".estado").textContent = "Sin asignar";
-        });
-        btn.textContent = "Conciliar pagos";
-        btn.dataset.estado = "";
-      }
-
-      function conciliar() {
-        btn.disabled = true;
-        filas.forEach(function (li, i) {
-          timers.push(setTimeout(function () {
-            var estado = li.querySelector(".estado");
-            li.classList.add("ok");
-            estado.textContent = "Conciliado → " + estado.dataset.destino;
-            if (i === filas.length - 1) {
-              btn.disabled = false;
-              btn.textContent = "Reiniciar demo";
-              btn.dataset.estado = "listo";
-            }
-          }, 450 * (i + 1)));
-        });
-      }
-
-      btn.addEventListener("click", function () {
-        if (btn.dataset.estado === "listo") reiniciar(); else conciliar();
-      });
-    })();
-  </script>
+  <script src="assets/main.js"></script>
 </body>
 </html>
