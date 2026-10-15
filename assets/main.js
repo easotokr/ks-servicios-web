@@ -20,9 +20,9 @@
       timers.forEach(clearTimeout); timers = [];
       filas.forEach(function (li) {
         li.classList.remove("ok");
-        li.querySelector(".estado").textContent = "Sin asignar";
+        li.querySelector(".estado").textContent = btn.dataset.unassigned || "Sin asignar";
       });
-      btn.textContent = "Conciliar pagos";
+      btn.textContent = btn.dataset.run || "Conciliar pagos";
       btn.dataset.estado = "";
     };
     var conciliar = function () {
@@ -31,10 +31,10 @@
         timers.push(setTimeout(function () {
           var e = li.querySelector(".estado");
           li.classList.add("ok");
-          e.textContent = "Conciliado: " + e.dataset.destino;
+          e.textContent = (btn.dataset.done || "Conciliado: ") + e.dataset.destino;
           if (i === filas.length - 1) {
             btn.disabled = false;
-            btn.textContent = "Reiniciar demo";
+            btn.textContent = btn.dataset.reset || "Reiniciar demo";
             btn.dataset.estado = "listo";
           }
         }, 450 * (i + 1)));
